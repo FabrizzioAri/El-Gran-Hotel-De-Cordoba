@@ -23,6 +23,8 @@ public class ElGranHotelDeCordoba {
        Huesped hue2 = new Huesped("Octavio","Calles",45845666,"octavio@gmail.com",355566135,true);
        Huesped hue3 = new Huesped("Jazmin","Saavedra",41215448,"jaz@gmail.com",116465484,true);
        HuespedData huespedData = new HuespedData();
+       huespedData.agregarHuesped(hue1);
+       huespedData.agregarHuesped(hue2);
        huespedData.agregarHuesped(hue3);
         
     }
