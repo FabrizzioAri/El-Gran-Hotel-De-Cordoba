@@ -30,7 +30,7 @@ public class HuespedData {
     
     
     public void agregarHuesped(Huesped huesped){
-        String sql = "INSERT INTO huesped(nombre, apellido,dni,correo,celular,estado) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO huesped(nombre,apellido,dni,correo,celular,estado) VALUES (?,?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
@@ -49,7 +49,7 @@ public class HuespedData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()){
-                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setIdHuesped(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Huesped añadido con exito");
                 
             }
