@@ -49,7 +49,7 @@ public class HuespedData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()){
-                huesped.setIdHuesped(rs.getInt("idHuesped"));
+                huesped.setIdHuesped(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Huesped añadido con exito");
                 
             }
