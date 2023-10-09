@@ -18,10 +18,10 @@ public class Habitacion {
     public Habitacion() {
     }
 
-    public Habitacion(int idHabitacion, int idTipo, int piso) {
-        this.idHabitacion = idHabitacion;
+    public Habitacion( int idTipo, boolean estado,int piso) {
         this.idTipo = idTipo;
         this.piso = piso;
+        this.estado = estado;
     }
 
     public Habitacion(int idHabitacion, int idTipo, boolean estado, int piso) {
