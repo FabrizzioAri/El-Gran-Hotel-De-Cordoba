@@ -78,6 +78,10 @@ public class TipoDeHabitacion {
     public String toString() {
         return "TipoDeHabitacion{" + "IdTipo=" + idTipo + ", CantPersonas=" + cantPersonas + ", CantidadCamas=" + cantCamas + ", TipoCamas=" + tipoCamas + ", Precio=" + precio + '}';
     }
+
+    public int cantPersonas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
