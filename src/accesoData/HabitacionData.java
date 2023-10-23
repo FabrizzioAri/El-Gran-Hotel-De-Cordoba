@@ -59,14 +59,16 @@ public class HabitacionData {
     public void modificarHabitacion(Habitacion habitacion){
         
         
-            String sql = "UPDATE habitacion SET idTipo = ?  WHERE idHabitacion = ?";
+            String sql = "UPDATE habitacion SET idTipo = ?, estado = ? WHERE idHabitacion = ?";
             PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, habitacion.getIdTipo());
             
-            ps.setInt(2, habitacion.getIdHabitacion());
+            ps.setBoolean(2, habitacion.isEstado());
+            
+            ps.setInt(3, habitacion.getIdHabitacion());
             
             int exito = ps.executeUpdate();
 

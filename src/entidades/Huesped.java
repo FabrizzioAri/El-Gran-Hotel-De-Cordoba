@@ -15,13 +15,13 @@ public class Huesped {
     private String apellido;
     private int dni;
     private String correo;
-    private int celular;
+    private long celular;
     private boolean estado;
 
     public Huesped() {
     }
 
-    public Huesped(String nombre, String apellido, int dni, String correo, int celular, boolean estado) {
+    public Huesped(String nombre, String apellido, int dni, String correo, long celular, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -30,7 +30,7 @@ public class Huesped {
         this.estado = estado;
     }
 
-    public Huesped(int idHuesped, String nombre, String apellido, int dni, String correo, int celular, boolean estado) {
+    public Huesped(int idHuesped, String nombre, String apellido, int dni, String correo, long celular, boolean estado) {
         this.idHuesped = idHuesped;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -80,11 +80,11 @@ public class Huesped {
         this.correo = correo;
     }
 
-    public int getCelular() {
+    public long getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(long celular) {
         this.celular = celular;
     }
 

@@ -41,7 +41,7 @@ public class HuespedData {
           
             ps.setString(4, (huesped.getCorreo()));
           
-            ps.setInt(5, huesped.getCelular());
+            ps.setLong(5, huesped.getCelular());
             
             ps.setBoolean(6, huesped.isEstado());
             
@@ -71,7 +71,7 @@ public class HuespedData {
             ps.setString(2, huesped.getApellido());
             ps.setInt(3, huesped.getDni());
             ps.setString(4, huesped.getCorreo());
-            ps.setInt(5, huesped.getCelular() );
+            ps.setLong(5, huesped.getCelular() );
             ps.setInt(6, huesped.getIdHuesped());
             int exito = ps.executeUpdate();
 
