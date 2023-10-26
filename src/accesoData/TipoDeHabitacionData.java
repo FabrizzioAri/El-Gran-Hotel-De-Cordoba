@@ -31,18 +31,18 @@ public class TipoDeHabitacionData {
     }
     
     public void agregarTipo(TipoDeHabitacion tipo){
-        String sql = "INSERT INTO tipohabitacion(cantPersonas, cantCamas, tipoCamas, precio) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO tipohabitacion(nombre ,cantPersonas, cantCamas, tipoCamas, precio) VALUES (?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                     
+            ps.setString(1, tipo.getNombre());
+            ps.setInt(2, tipo.getCantPersonas());
             
-            ps.setInt(1, tipo.getCantPersonas());
-            
-            ps.setInt(2, tipo.getCantCamas());
+            ps.setInt(3, tipo.getCantCamas());
            
-            ps.setString(3, tipo.getTipoCamas());
+            ps.setString(4, tipo.getTipoCamas());
           
-            ps.setInt(4, tipo.getPrecio());
+            ps.setInt(5, tipo.getPrecio());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -61,19 +61,21 @@ public class TipoDeHabitacionData {
     public void modificarTipo(TipoDeHabitacion tipo){
         
         
-            String sql = "UPDATE tipoHabitacion SET cantPersonas = ? ,cantCamas = ?, tipoCamas = ?, precio = ? WHERE idTipo = ?";
+            String sql = "UPDATE tipoHabitacion SET nombre= ? ,cantPersonas = ? ,cantCamas = ?, tipoCamas = ?, precio = ? WHERE idTipo = ?";
             PreparedStatement ps = null;
 
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, tipo.getCantPersonas());
             
-            ps.setInt(2, tipo.getCantCamas());
+            ps.setString(1, tipo.getNombre());
+            ps.setInt(2, tipo.getCantPersonas());
+            
+            ps.setInt(3, tipo.getCantCamas());
            
-            ps.setString(3, tipo.getTipoCamas());
+            ps.setString(4, tipo.getTipoCamas());
           
-            ps.setInt(4, tipo.getPrecio());
-            ps.setInt(5, tipo.getIdTipo());
+            ps.setInt(5, tipo.getPrecio());
+            ps.setInt(6, tipo.getIdTipo());
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
@@ -83,9 +85,26 @@ public class TipoDeHabitacionData {
             }
 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Tipo de Habitacion "+ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Tipo de Habitacion "+ ex.getMessage());
             }
 
+    }
+    
+    public void eliminarTipo(int id) {
+
+        try {
+            String sql = "UPDATE tipoHabitacion SET estado = 0 WHERE idTipo = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila=ps.executeUpdate();
+
+            if(fila==1){
+                JOptionPane.showMessageDialog(null, "Se Deshabilito el Tipo.");
+            }
+            ps.close();
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla del Tipo de Habitacion" + ex.getMessage());
+            }  
     }
     
     

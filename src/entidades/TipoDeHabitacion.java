@@ -11,6 +11,7 @@ package entidades;
  */
 public class TipoDeHabitacion {
     private int idTipo;
+    private String nombre;
     private int cantPersonas;
     private int cantCamas;
     private String tipoCamas;
@@ -19,15 +20,25 @@ public class TipoDeHabitacion {
     public TipoDeHabitacion() {
     }
 
-    public TipoDeHabitacion(int cantPersonas, int cantCamas, String tipoCamas, int precio) {
+    public TipoDeHabitacion(String nombre ,int cantPersonas, int cantCamas, String tipoCamas, int precio) {
+        this.nombre = nombre;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantCamas;
         this.tipoCamas = tipoCamas;
         this.precio = precio;
     }
 
-    public TipoDeHabitacion(int idTipo, int cantPersonas, int cantidadCamas, String tipoCamas, int precio) {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public TipoDeHabitacion(int idTipo,String nombre, int cantPersonas, int cantidadCamas, String tipoCamas, int precio) {
         this.idTipo = idTipo;
+        this.nombre = nombre;
         this.cantPersonas = cantPersonas;
         this.cantCamas = cantidadCamas;
         this.tipoCamas = tipoCamas;
@@ -76,8 +87,10 @@ public class TipoDeHabitacion {
 
     @Override
     public String toString() {
-        return "TipoDeHabitacion{" + "IdTipo=" + idTipo + ", CantPersonas=" + cantPersonas + ", CantidadCamas=" + cantCamas + ", TipoCamas=" + tipoCamas + ", Precio=" + precio + '}';
+        return "TipoDeHabitacion{" + "idTipo=" + idTipo + ", nombre=" + nombre + ", cantPersonas=" + cantPersonas + ", cantCamas=" + cantCamas + ", tipoCamas=" + tipoCamas + ", precio=" + precio + '}';
     }
+
+    
 
     public int cantPersonas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
