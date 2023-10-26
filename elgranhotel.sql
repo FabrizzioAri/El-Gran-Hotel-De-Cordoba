@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 23:20:14
+-- Tiempo de generación: 27-10-2023 a las 00:41:25
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,6 +36,16 @@ CREATE TABLE `habitacion` (
   `piso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`idHabitacion`, `idTipo`, `estado`, `piso`) VALUES
+(1, 2, 0, 1),
+(2, 3, 1, 1),
+(3, 3, 0, 1),
+(4, 1, 0, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -48,7 +58,7 @@ CREATE TABLE `huesped` (
   `apellido` varchar(20) NOT NULL,
   `dni` int(15) NOT NULL,
   `correo` varchar(30) NOT NULL,
-  `celular` int(20) NOT NULL,
+  `celular` bigint(20) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,7 +70,8 @@ INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `dni`, `correo`, `celu
 (1, 'Carlos', 'Montiel', 45794166, 'elpity@gmail.com', 351479865, 1),
 (2, 'Octavio', 'Calles', 45845666, 'octavio@gmail.com', 355566135, 1),
 (4, 'Jazmin', 'Saavedra', 41215448, 'jaz@gmail.com', 116465484, 1),
-(5, 'prueba', 'S', 41254548, 'prueba@gmail.com', 113235484, 1);
+(5, 'Pruueba', 'sas', 41254548, 'prueba@gmail.com', 3513235484, 0),
+(8, 'Fabrizzio', 'Ariatello', 42640944, 'fabriariatello@gmail.com', 3517341324, 1);
 
 -- --------------------------------------------------------
 
@@ -87,11 +98,23 @@ CREATE TABLE `reserva` (
 
 CREATE TABLE `tipohabitacion` (
   `idTipo` int(11) NOT NULL,
+  `nombre` varchar(11) NOT NULL,
   `cantPersonas` int(11) NOT NULL,
   `cantCamas` int(11) NOT NULL,
   `tipoCamas` varchar(11) NOT NULL,
-  `precio` int(11) NOT NULL
+  `precio` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tipohabitacion`
+--
+
+INSERT INTO `tipohabitacion` (`idTipo`, `nombre`, `cantPersonas`, `cantCamas`, `tipoCamas`, `precio`, `estado`) VALUES
+(1, 'Triple', 3, 3, 'Simple', 250, 1),
+(2, 'Doble', 2, 1, 'Queen', 300, 1),
+(3, 'Cuadruple', 4, 2, 'King', 350, 1),
+(4, 'prueba', 4, 4, 'Queen', 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -133,25 +156,25 @@ ALTER TABLE `tipohabitacion`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipohabitacion`
 --
 ALTER TABLE `tipohabitacion`
-  MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
