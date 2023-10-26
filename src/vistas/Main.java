@@ -60,6 +60,10 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        escritorio.setBackground(new java.awt.Color(157, 63, 65));
+        escritorio.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jLabel1.setBackground(new java.awt.Color(137, 3, 24));
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel1.setText("El Gran Hotel 60 de Cordoba");
 
@@ -70,17 +74,19 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(291, 291, 291)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(497, Short.MAX_VALUE))
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(escritorioLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(554, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(157, 63, 65));
 
         jMenu1.setText("Huesped");
         jMenu1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -146,13 +152,15 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(escritorio)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escritorio))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

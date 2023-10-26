@@ -29,7 +29,7 @@ public class HuespedData {
     
     
     public void agregarHuesped(Huesped huesped){
-        String sql = "INSERT INTO huesped(nombre, apellido,dni,correo,celular,estado) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO huesped(nombre,apellido,dni,correo,celular,estado) VALUES (?,?,?,?,?,?)";
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
