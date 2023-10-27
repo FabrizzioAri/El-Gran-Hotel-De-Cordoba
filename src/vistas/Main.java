@@ -55,6 +55,7 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jmReserva = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -119,6 +120,11 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
 
         jMenu2.setText("Habitaciones");
         jMenu2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         jMenuItem4.setText("Alta Habitacion");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +151,24 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
+
+        jmReserva.setText("Reserva");
+        jmReserva.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jmReserva.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jmReservaMenuSelected(evt);
+            }
+        });
+        jmReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmReservaActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jmReserva);
 
         setJMenuBar(jMenuBar1);
 
@@ -226,6 +250,23 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
        escritorio.moveToFront(bpn);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jmReservaMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jmReservaMenuSelected
+        escritorio.removeAll();
+       escritorio.repaint();
+       altaReserva bpn = new altaReserva();
+       bpn.setVisible(true);
+       escritorio.add(bpn);
+       escritorio.moveToFront(bpn);
+    }//GEN-LAST:event_jmReservaMenuSelected
+
+    private void jmReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmReservaActionPerformed
+       
+    }//GEN-LAST:event_jmReservaActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,5 +316,6 @@ public static TreeSet <Huesped> listaHuespedes = new TreeSet<>();
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jmAlta;
+    private javax.swing.JMenu jmReserva;
     // End of variables declaration//GEN-END:variables
 }

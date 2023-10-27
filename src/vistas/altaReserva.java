@@ -5,8 +5,11 @@ package vistas;
 
 
 
+import entidades.Huesped;
 import java.time.LocalDate;
-
+import entidades.Reserva;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
 
 
 
@@ -16,11 +19,11 @@ import java.time.LocalDate;
  *
  * @author Marcos
  */
-public class Reserva extends javax.swing.JFrame {
+public class altaReserva extends javax.swing.JFrame {
    
     
     
-    public Reserva() {
+    public altaReserva() {
         initComponents();
     
     }
@@ -226,23 +229,73 @@ public class Reserva extends javax.swing.JFrame {
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultarActionPerformed
-         String nombre = jtNombre.getText();
-         String apellido = jtApellido.getText();
-         String dni = jtDni.getText();
-         
-         LocalDate fechaLlegada = jdLlegada.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         LocalDate fechaSalida = jdSalida.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         
-         Reserva reserva = new Reserva();
-         reserva.setNombre(nombre);
-          reserva.setApellido(apellido);
-          reserva.setDni(dni);
-          reserva.setFechaLlegada(fechaLlegada);
-          reserva.setFechaSalida(fechaSalida);
-          
-          guardarReserva(reserva);
-          
+  String nombre = jtNombre.getText();
+    String apellido = jtApellido.getText();
+    String dniText = jtDni.getText();
 
+    if (nombre.isEmpty() || apellido.isEmpty() || dniText.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        return;
+    }
+
+    try {
+        int dni = Integer.parseInt(dniText);
+
+        LocalDate fechaLlegada = obtenerFecha(jdLlegada);
+        LocalDate fechaSalida = obtenerFecha(jdSalida);
+
+        if (fechaLlegada != null && fechaSalida != null) {
+            Reserva reserva = new crearReserva(nombre, apellido, dni, fechaLlegada, fechaSalida);
+
+            if(reserva != null){
+                if (guardarReserva(reserva)){
+                    JOptionPane.showMessageDialog(null, "Reserva añadida con éxito");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error al guardar la reserva");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese fechas válidas");
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Ingrese un DNI válido");
+    }
+         }
+
+          
+    private LocalDate obtenerFecha(com.toedter.calendar.JDateChooser dateChooser) {
+        if (dateChooser.getDate() != null) {
+            return dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+        return null;
+    }
+
+    private Reserva crearReserva(String nombre, String apellido, int dni, LocalDate fechaLlegada, LocalDate fechaSalida, int CantPersonas) {
+        if (!nombre.isEmpty() && !apellido.isEmpty() && dni != 0 && fechaLlegada != null && fechaSalida != null) {
+            Reserva reserva = new Reserva();
+            Huesped huesped = new Huesped();
+            huesped.setNombre(nombre);
+            huesped.setApellido(apellido);
+            huesped.setDni(dni);
+            reserva.setCantPersonas(CantPersonas);
+            reserva.setFechaEntrada(fechaLlegada);
+            reserva.setFechaSalida(fechaSalida);
+            return reserva;
+        }
+        JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        return null;
+    }
+
+    private boolean guardarReserva(Reserva reserva) {
+        try {
+            accesoData.ReservaData reservaData = new accesoData.ReservaData();
+            reservaData.guardarReserva(reserva);
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar la reserva: " + e.getMessage());
+            return false;
+        }
+    
 
     
 
@@ -260,12 +313,23 @@ public class Reserva extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jdSalidaAncestorAdded
 
+    private void jtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNumeroActionPerformed
+         String idReserva = generarCodigoReserva();
+    }
+    private String generarCodigoReserva() {
+        String idReserva = nombre.substring(0, 3) + dni;
+    return idReserva;
+
+    
+    }//GEN-LAST:event_jtNumeroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jPersonas;
@@ -278,6 +342,7 @@ public class Reserva extends javax.swing.JFrame {
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtDni;
     private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtNumero;
     // End of variables declaration//GEN-END:variables
 
    

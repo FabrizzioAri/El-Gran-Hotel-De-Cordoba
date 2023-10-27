@@ -113,6 +113,9 @@ public class Reserva {
     public String toString() {
         return "Reserva{" + "idReserva=" + idReserva + ", Huesped=" + huesped + ", Habitacion=" + habitacion + ", Fecha Entrada=" + fechaEntrada + ", Fecha Salida=" + fechaSalida + ", Cantidad de Personas=" + cantPersonas + ", Precio=" + precio + ", Estado=" + estado + '}';
     }
+
+
+
     
     
 }
