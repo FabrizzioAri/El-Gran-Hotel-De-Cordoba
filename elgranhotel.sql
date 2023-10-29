@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-10-2023 a las 00:41:25
+-- Tiempo de generación: 29-10-2023 a las 15:34:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -41,10 +41,11 @@ CREATE TABLE `habitacion` (
 --
 
 INSERT INTO `habitacion` (`idHabitacion`, `idTipo`, `estado`, `piso`) VALUES
-(1, 2, 0, 1),
+(1, 2, 1, 1),
 (2, 3, 1, 1),
-(3, 3, 0, 1),
-(4, 1, 0, 1);
+(3, 2, 1, 1),
+(4, 1, 1, 1),
+(5, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,9 @@ INSERT INTO `huesped` (`idHuesped`, `nombre`, `apellido`, `dni`, `correo`, `celu
 (1, 'Carlos', 'Montiel', 45794166, 'elpity@gmail.com', 351479865, 1),
 (2, 'Octavio', 'Calles', 45845666, 'octavio@gmail.com', 355566135, 1),
 (4, 'Jazmin', 'Saavedra', 41215448, 'jaz@gmail.com', 116465484, 1),
-(5, 'Pruueba', 'sas', 41254548, 'prueba@gmail.com', 3513235484, 0),
-(8, 'Fabrizzio', 'Ariatello', 42640944, 'fabriariatello@gmail.com', 3517341324, 1);
+(5, 'Prueba', 'Admin', 12345678, 'prueba@gmail.com', 3513222446, 0),
+(8, 'Fabrizzio', 'Ariatello', 42640944, 'fabriariatello@gmail.com', 117341324, 1),
+(9, 'Marcos', 'Palacio', 45706211, 'marquitos@gmail.com', 3514397571, 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +91,13 @@ CREATE TABLE `reserva` (
   `precio` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reserva`
+--
+
+INSERT INTO `reserva` (`idReserva`, `idHuesped`, `idHabitacion`, `fechaEntrada`, `fechaSalida`, `cantPersonas`, `precio`, `estado`) VALUES
+(3, 8, 1, '2023-06-20', '2023-06-25', 2, 300, 1);
 
 -- --------------------------------------------------------
 
@@ -156,19 +165,19 @@ ALTER TABLE `tipohabitacion`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `huesped`
 --
 ALTER TABLE `huesped`
-  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idHuesped` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipohabitacion`
